@@ -1,0 +1,21 @@
+<div class="row mt-5">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Fecha de nacimiento</th>
+                    <th scope="col">Direccion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let patient of patients | paginate: {itemsPerPage: 5, currentPage: currentPage_};">
+                    <td>{{patient.name + " - " + patient.lastname}}</td>
+                    <td>{{patient.birthdate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{patient.address}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="currentPage_ = $event"></pagination-controls>
+    </div>
+</div>
